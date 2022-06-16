@@ -1,48 +1,51 @@
-// import logo from './logo.svg';
-import './App.css';
+import { useState, } from "react";
 
-//componets
-import Title from './components/Title';
-import FullName from './components/FullName';
-import { useState } from 'react';
+import "./App.css";
+
+// Components
+import Title from "./components/Title";
+import FullName from "./components/FullName";
+import Square from "./components/Square"
 
 function App() {
+  
+  const [count,setCount] = useState(1)
 
-  // Local state
-  // [0] = valor del state
-  // [1] = función que actualiza el state
-  // si `useState` recibe un argumento, este será el valor inicial del estado
-  // si no el estado es undefined
-  const [count, setCount] = useState(0)
-  console.log(count, 'COUNT')
-  console.log(setCount, 'SET_COUNT')
+    const handleClick = (increase) => {
+    let newCount = count;
+    if (increase) {
+      newCount = newCount + 1;
+    } else {
+      newCount = newCount - 1;
+    }
+    setCount(newCount);
+  };
 
-  const handleClick = () => {
-    setCount(count + 1)
-  }
-
-  const handleClickD = () => {
-    setCount(count - 1)
-  }
+  const isMultiple = count % 5 === 0 && count !== 0 ? true : false;
+  const countType = isMultiple ? "es multiplo de 5" : "No es multiplo de 5"
+  const countClass = isMultiple ? "active" : "inactivo"
 
 
+  
 
   return (
     <div className="App">
       <header className="App-header">
-
-
         <Title text="Aaron"></Title>
-        <FullName firstName="Luis" lastName='Vera'></FullName>
+        <FullName firstName="Luis" lastName="Vera"></FullName>
 
-        <p>Has hecho click {count} veces</p>
-        <button onClick={handleClick}>Increase</button>
-        <button onClick={handleClickD}>Decrease</button>
+        <p className = {countClass}>
+          Counter: {count} , {countType}
+        </p>
+
+        <button onClick={() => handleClick(true)}>Increase</button>
+              </header>
+              
+
+        <Square text="On-Off"></Square>
+
         
-
-      </header>
     </div>
   );
 }
-
 export default App;
