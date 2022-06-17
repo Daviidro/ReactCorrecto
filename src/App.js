@@ -7,7 +7,9 @@ import FullName from "./components/FullName";
 function App() {
   const [count, setCount] = useState(0);
   const [isOn, setIsOn] = useState(false);
+//---------------------------------------------------------------
 
+//---------------------------------------------------------------
   const handleClick = (increase) => {
     let newCount = count;
     if (increase) {
