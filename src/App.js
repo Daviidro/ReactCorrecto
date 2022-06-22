@@ -4,12 +4,13 @@ import "./App.css";
 import { useState } from "react";
 
 function App() {
-
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [age, setAge] = useState("");
   const [gender, setGender] = useState("");
   const [photoURL, setPhotoURL] = useState("");
+  const [amountMXN, setAmountMXN] = useState(null);
+  const [amountUSD, setAmountUSD] = useState(null);
 
   const [koders, setKoders] = useState([
     {
@@ -19,7 +20,6 @@ function App() {
       gender: "m",
       photoURL: "https://sgame.etsisi.upm.es/pictures/18253.jpg?1621958969/",
     },
-
     {
       firstName: "Yusef",
       lastName: "Lopéz",
@@ -29,7 +29,7 @@ function App() {
     },
   ]);
 
-  const kodersUI = koders.map( 
+  const kodersUI = koders.map(
     ({ firstName, lastName, age, gender, photoURL }, index) => {
       console.log(firstName);
       return (
@@ -68,7 +68,17 @@ function App() {
     setPhotoURL("");
   };
 
-  console.log(koders, "KODERS");
+  const handleChangeAmount = ({ target: { value } }, from) => {
+    const USD = 20.16;
+    // from = USD o MXN
+    if (from === "USD") {
+      setAmountMXN(value * USD);
+      setAmountUSD(value);
+    } else {
+      setAmountMXN(value);
+      setAmountUSD(value / USD);
+    }
+  };
 
   return (
     <div className="App">
@@ -77,6 +87,7 @@ function App() {
       </div>
       <form onSubmit={handleSubmit}>
         <input
+          placeholder="First name"
           value={firstName}
           onChange={(event) => setFirstName(event.target.value)}
         />
@@ -95,7 +106,21 @@ function App() {
         />
         <button type="submit">Agregar Koder</button>
       </form>
+
+      <div>
+        <input
+          type="number"
+          value={amountMXN}
+          onChange={(e) => handleChangeAmount(e, "MXN")}
+        />
+        <input
+          type="number"
+          value={amountUSD}
+          onChange={(e) => handleChangeAmount(e, "USD")}
+        />
+      </div>
     </div>
   );
 }
+
 export default App;
