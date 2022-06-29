@@ -1,3 +1,19 @@
+// import "../Charactersprofile/index"
+
 export default function ProfileEdit() {
-  return <h2>Edit</h2>;
+  return <hi>hola</hi>
 }
+
+
+
+
+
+// export default function ProfileEdit(name, status, species) {
+//   return <div>
+//     {name}
+//     {status}
+//     {species}
+//     </div>;
+// }
+
+// ProfileEdit()
