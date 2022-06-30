@@ -30,6 +30,7 @@ export default function ProfileList() {
 
       <button onClick={() => navigate(user.id)}>Detalle</button>
       <button onClick={() => navigate(`edit/${user.id}`)}>Editar</button>
+      <button onClick={() => navigate(`Eliminar/${user.id}`)}>Eliminar</button>
     </div>
   );
 
