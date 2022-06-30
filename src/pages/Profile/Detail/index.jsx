@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { retrieve as retrieveUser } from "../../../services/users.js";
+import { useParams, useNavigate } from "react-router-dom";
+import { retrieve as retrieveUser } from "../../../services/users";
 
 // CSS
 import "./Detail.css";
@@ -11,20 +11,16 @@ export default function ProfileDetail() {
 
   // RRD
   const { id } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    console.log("PRIMERA VEZ");
-
     const getUser = async () => {
       const data = await retrieveUser(id);
-      setTimeout(() => {
-        setUser(data);
-      }, 2000);
-      console.log(data);
+      setUser(data);
     };
 
     getUser();
-  }, []);
+  }, [id]);
 
   console.log(id);
 
@@ -35,11 +31,13 @@ export default function ProfileDetail() {
         <p>Loading</p>
       ) : (
         <div>
-          <img src={user.photoURL} />
+          <img alt="profile" src={user.photoURL} />
           <p>
             {user.firstName} {user.lastName}
           </p>
           <p>{user.email}</p>
+          <p>{user.birthdate}</p>
+          <button onClick={() => navigate(-1)}>Regresar</button>
         </div>
       )}
     </div>

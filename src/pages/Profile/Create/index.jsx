@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 // import { create as createUser } from "../../../services/users";
-import { create as createUser} from "../../../services/users"
+import { create as createUser} from "../../../services/users.js"
 // Toastify
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
