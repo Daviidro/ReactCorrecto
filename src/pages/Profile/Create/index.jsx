@@ -9,6 +9,8 @@ import "react-toastify/dist/ReactToastify.css";
 // CSS
 import "./Create.css";
 
+import Input from "../../../components/Input/index.jsx";
+
 export default function ProfileCreate() {
   // Local state
   const [firstName, setFirstName] = useState("");
@@ -62,50 +64,37 @@ export default function ProfileCreate() {
       <h2>Create</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-container">
-          <div className="form-child">
-            <input
-              className="input"
-              placeholder="First Name"
-              value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
-            />
-          </div>
-          <div className="form-child">
-            <input
-              className="input"
-              placeholder="Last Name"
-              value={lastName}
-              onChange={(e) => setLastName(e.target.value)}
-            />
-          </div>
+          <Input
+            placeholder="LastName"
+            value={firstName}
+            callback={(e) => setFirstName(e.target.value)}          
+          />
+          <Input
+            placeholder="LastName"
+            value={lastName}
+            callback={(e) => setLastName(e.target.value)}          
+          />
         </div>
         <div className="form-container">
-          <div className="form-child">
-            <input
-              className="input"
-              placeholder="Photo URL"
-              type="url"
-              value={photoURL}
-              onChange={(e) => setPhotoURL(e.target.value)}
-            />
-          </div>
-          <div className="form-child">
-            <input
-              className="input"
-              placeholder="Email"
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </div>
+          <Input
+            placeholder="Photo URL"
+            type="url"
+            value={photoURL}
+            callback={(e) => setPhotoURL(e.target.value)}          
+          />
+          <Input
+            placeholder="Email"
+            type="email"
+            value={email}
+            callback={(e) => setEmail(e.target.value)}          
+          />
         </div>
         <div className="form-container">
-          <input
-            className="input"
-            placeholder="Birthdate"
+          <Input
+            placeholder="Birthday"
             type="date"
             value={birthdate}
-            onChange={(e) => setBirthdate(e.target.value)}
+            callback={(e) => setBirthdate(e.target.value)}          
           />
         </div>
         <button type="submit" className="btn">
